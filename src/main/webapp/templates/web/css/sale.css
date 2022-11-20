@@ -1,0 +1,320 @@
+
+#demo {
+    text-align: right;
+    font-size: 2rem;
+    padding: 10px 0;
+    text-transform: uppercase;
+}
+
+.small-container {
+    margin: 24px 0;
+}
+#words {
+    color: var(--white);
+}
+
+.col-5 {
+    flex-basis: 17%;
+    padding: 10px;
+    min-width: 200px;
+    margin-bottom: 50px;
+    transition: transform 0.5s;
+}
+
+.col-5 h2 {
+    font-weight: 600;
+    color: #555;
+    font-size: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    letter-spacing: 3px;
+}
+
+.col-5 p {
+    color: red;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.col-5 img {
+    width: 100%;
+}
+
+.title {
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--gray-dark);
+    letter-spacing: 5px;
+}
+
+h4 {
+    color: #555;
+    font-weight: normal;
+}
+
+.col-5 p {
+    font-size: 14px;
+}
+
+.rating .fa {
+    color: #ff523b;
+}
+
+.col-5:hover {
+    transform: translateY(-5px);
+}
+
+.row-outer .container-row {
+    background-color: var(--red);
+    padding: 10px 0;
+}
+
+.animated-heading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10vh;
+}
+.small-container .row .col:last-child .product {
+    position: relative;
+}
+.small-container .row .col:last-child .product .view-more {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.39);
+}
+.product .view-more .view-more__link {
+    font-size: 1.6rem;
+    color: var(--white);
+}
+.product .view-more .view-more__link:hover {
+    color: var(--orange);
+}
+
+/***************** phan cua Thang *****************/
+.top-product {
+    margin: 24px 0;
+    position: relative;
+    height: 500px;
+}
+.top-product__video {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 100%;
+}
+.top-product__list {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    width: 60%;
+}
+.top-product__title {
+    color: var(--gray-dark);
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 200;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    padding: 10px 0;
+}
+.product.product-top {
+    margin: 0;
+}
+.product-top .product__img {
+    height: 320px;
+}
+.top-product__list-wrap {
+    position: relative;
+    width: auto;
+    overflow: auto;
+    background-color: var(--white);
+    padding: 10px;
+    cursor: grab;
+}
+.top-product__list-icon {
+    display: block;
+    padding: 5px 10px;
+    position: absolute;
+    z-index: 5;
+    top: 50%;
+    right: 0;
+    transform: translate(-50%, -100%);
+    font-size: 4rem;
+    font-weight: 400;
+    color: var(--white);
+    background-color: rgba(0, 0, 0, 0.479);
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all ease-in 0.2s;
+}
+.top-product__list-icon:hover {
+    color: rgba(0, 0, 0, 0.479);
+    background-color: var(--white);
+}
+.top-product__list-wrap .row {
+    flex-wrap: nowrap;
+}
+.top-product__list-wrap::-webkit-scrollbar {
+    display: none;
+}
+.top-product .btn-action {
+    padding: 5px;
+}
+.top-product .product__action-cart::before {
+    transform:  translate(0, 0);
+}
+/********** key word hot *********/
+.key-top {
+    margin-bottom: 24px;
+}
+.key-top__title {
+    font-size: 3rem;
+    color: var(--gray-dark);
+    font-weight: 200;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.key-top__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 -10px;
+}
+.key-top__item {
+    flex-basis: 16.6666%;
+    padding: 0 10px;
+    background-color: var(--white);
+    margin-bottom: 10px;
+}
+.key-top__item-link {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: var(--light);
+    color: var(--gray-dark);
+    font-size: 1.4rem;
+    padding: 10px 0;
+    border-radius: 5px;
+    transition: all 0.2s ease-in;
+}
+.key-top__item-link:hover {
+    background-color: var(--orange);
+    color: var(--white);
+}
+
+/********************* news *********************/
+.news {
+    margin-bottom: 24px;
+}
+.news__title {
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+    text-align: center;
+    letter-spacing: 5px;
+    margin-bottom: 24px;
+}
+/** left **/
+.news-left {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+.news-left__img {
+    width: 100%;
+    height: 450px;
+    object-fit: cover;
+    object-position: top;
+}
+.news-left__belong {
+    display: flex;
+    padding: 5px 0;
+}
+.news-left__date,
+.news-left__author {
+    display: inline-block;
+    font-size: 1.4rem;
+    color: var(--gray);
+}
+.news-left__title {
+    display: inline-block;
+    font-size: 2rem;
+    color: var(--gray-dark);
+    font-weight: 550;
+    padding: 5px 0;
+}
+.news-left__title:hover {
+    color: var(--orange);
+}
+.news-left__desc {
+    font-size: 1.4rem;
+    height: 3rem;
+    color: var(--gray);
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/** right ***/
+.news-right {
+    display: flex;
+    flex-direction: column;
+}
+.news-right__item {
+    height: 190px;
+}
+.news-right__item-img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    object-position: top;
+}
+.news-right__item-main {
+    display: flex;
+    flex-direction: column;
+}
+.news-right__item-belong {
+    display: flex;
+    padding: 5px 0;
+}
+.news-right__item__date,
+.news-right__item__author {
+    font-size: 1.2rem;
+    color: var(--gray);
+}
+.news-right__item__title {
+    display: block;
+    font-size: 1.6rem;
+    color: var(--gray-dark);
+    font-weight: 550;
+    padding: 5px 0;
+}
+.news-right__item__title:hover {
+    color: var(--orange);
+}
+.news-right__item__desc {
+    font-size: 1.4rem;
+    color: var(--gray);
+    height: 3rem;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

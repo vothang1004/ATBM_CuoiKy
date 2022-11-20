@@ -1,0 +1,183 @@
+.sidebar {
+    border: 1px solid #ccc;
+    padding: 10px 0;
+    user-select: none;
+    height: 100%;
+}
+/******************* sidebar category **********************/
+.sidebar__category {
+    padding: 0 10px;
+}
+.sidebar__category-title {
+    font-size: 2rem;
+    color: var(--gray-dark);
+    padding: 10px 0;
+}
+.sidebar__category-list {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar__category-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+}
+.sidebar__category-link {
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+    display: inline-block;
+    flex-grow: 1;
+    color: var(--gray-dark);
+}
+.sidebar__category-icon, .sidebar__category-icon2 {
+    color: var(--gray-dark);
+    font-size: 1.6rem;
+    cursor: pointer;
+    transition: all 0.2s ease-in;
+}
+.sidebar__category-item:hover .sidebar__category-link,
+.sidebar__category-item:hover .sidebar__category-icon {
+    color: var(--orange);
+}
+/********************* sublist ********************/
+.sidebar__category-sublist {
+    padding-left: 10px;
+    display: none;
+}
+.sidebar__category-sublist-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+}
+.sidebar__category-sublist-link {
+    display: inline-block;
+    flex-grow: 1;
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+}
+.sidebar__category-sublist-item:hover .sidebar__category-sublist-link,
+.sidebar__category-sublist-item:hover .sidebar__category-icon2 {
+    color: var(--orange);
+}
+/********************** sublist sublist **********************/
+.sidebar__category-sublist__sublist {
+    padding-left: 15px;
+    display: none;
+}
+.sidebar__category-sublist__sublist-item {
+    display: flex;
+    padding: 10px 0;
+}
+
+.sidebar__category-sublist__sublist-link {
+    display: inline-block;
+    flex-grow: 1;
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+}
+.sidebar__category-sublist__sublist-link:hover {
+    color: var(--orange);
+}
+/*********************************************** sidebar filter ***********************/
+.sidebar__filter {
+    display: flex;
+    flex-direction: column;
+}
+.sidebar__filter-title {
+    display: flex;
+    flex-direction: column;
+    background-color: var(--gray-dark);
+    padding: 0 10px;
+    margin-bottom: 24px;
+}
+.sidebar__filter-title h3 {
+    font-size: 1.6rem;
+    font-weight: 200;
+    color: var(--white);
+    padding-top: 5px;
+}
+.sidebar__filter-title p {
+    font-size: 1.2rem;
+    color: var(--white);
+    padding: 5px 0;
+}
+
+/**** brand ********/
+.sidebar__filter-brand {
+    margin-bottom: 24px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar__filter-brand__title {
+    font-size: 1.6rem;
+    color: var(--gray-dark);
+    font-weight: 550;
+}
+.sidebar__filter__choose {
+    padding: 10px 0;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar__filter-toggle {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 40px;
+    height: 20px;
+    background-color: #ccc;
+    margin-right: 10px;
+    border-radius: 40px;
+    cursor: pointer;
+    transition: all linear 0.2s;
+}
+.sidebar__filter-toggle::before {
+    content: '';
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border-radius: 50px;
+    background-color: var(--white);
+    transition: all 0.2s ease-in;
+    pointer-events: none;
+}
+.sidebar__filter-input:checked + .sidebar__filter-toggle  {
+    background-color: var(--orange);
+}
+.sidebar__filter-input:checked + .sidebar__filter-toggle::before  {
+    left: calc(100% - 18px);
+}
+.sidebar__filter-toggle-label {
+    font-size: 1.4rem;
+    color: var(--gray-dark)
+}
+
+/********** price ***********/
+.sidebar__filter-price {
+    margin-bottom: 24px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar__filter-price__title {
+    font-size: 1.6rem;
+    color: var(--gray-dark);
+    font-weight: 550;
+}
+
+/************ material *********/
+.sidebar__filter-material {
+    margin-bottom: 24px;
+    padding: 0 10px;
+    display: flex;
+    flex-direction: column;
+}
+.sidebar__filter-material__title {
+    font-size: 1.6rem;
+    color: var(--gray-dark);
+    font-weight: 550;
+}

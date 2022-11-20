@@ -1,0 +1,29 @@
+.container-newproduct {
+    position: relative;
+    top: 140px;
+    margin: 24px 0;
+}
+.container-newproduct__direct {
+    display: flex;
+    margin-bottom: 24px;
+}
+.container-newproduct__direct a {
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+    display: inline-block;
+    margin-right: 5px;
+}
+.container-newproduct__direct a:hover {
+    color: var(--orange);
+}
+.container-newproduct__direct span{
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+}
+.container-newproduct__direct span:last-of-type {
+    display: inline-block;
+    margin-left: 5px;
+    color: var(--orange);
+}
+
+/************************** nội dung ********************/

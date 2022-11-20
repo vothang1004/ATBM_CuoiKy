@@ -1,0 +1,51 @@
+.createaccount__board {
+    margin: 24px auto 0;
+    width: 70%;
+    box-shadow: 0 0 10px 2px rgba(0, 0, 0, 0.308);
+    border-radius: 5px;
+    padding: 20px;
+}
+.createaccount__board-title {
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--blue);
+    padding: 20px 0;
+}
+.createaccount__board-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+.createaccount__board-form__label {
+    display: block;
+    font-size: 1.4rem;
+    font-weight: 550;
+    color: var(--blue);
+    margin-bottom: 10px;
+}
+.createaccount__board-form__input{
+    border: none;
+    outline: none;
+    padding: 12px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.308);
+    border-radius: 5px;
+}
+.createaccount__btn-wrap {
+    text-align: center;
+}
+.createaccount__btn {
+    width: 20%;
+    border: none;
+    outline: none;
+    background-color: var(--blue);
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 1.4rem;
+    color: var(--white);
+    font-weight: 550;
+}
+.createaccount__btn:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}

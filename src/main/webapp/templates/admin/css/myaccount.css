@@ -1,0 +1,80 @@
+.myaccount__board {
+    user-select: none;
+    width: 70%;
+    background-color: var(--white);
+    margin: 24px auto 0;
+    box-shadow: 0 0 10px 1px rgba(0, 0, 0, 0.308);   
+    border-radius: 5px;
+    padding: 20px;
+}
+.myaccount__board-title h2 {
+    color: var(--blue);
+    font-weight: 300;
+}
+
+.myaccount__board-title p{
+    color: var(--gray);
+    font-size: 1.2rem;
+}
+.myaccount__board-title h2 {
+    font-size: 2rem;
+}
+.myaccount__board-title p {
+    font-size: 1.4rem;
+}
+.myaccount__board-form {
+    margin-top: 24px;
+}
+.myaccount__board-form .form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+.myaccount__board-form .form-group.hidden {
+    margin-top: 24px;
+    display: none;
+}
+.myaccout__form-label {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--blue);
+    font-weight: 550;
+    margin-bottom: 10px;
+}
+.myaccount__form-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    padding: 12px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.288);
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+}
+.myaccount__change-password {
+    display: block;
+    font-size: 1.4rem;
+    color: var(--blue);
+    cursor: pointer;
+}
+.myaccount__change-password:hover {
+    filter: brightness(90%);
+}
+.myaccount__form-btn-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.myaccount__form-btn {
+    border: none;
+    outline: none;
+    padding: 10px 15px;
+    background-color: var(--blue);
+    border-radius: 5px;
+    color: var(--white);
+    font-weight: 550;
+}
+.myaccount__form-btn:hover {
+    filter: brightness(90%);
+    cursor: pointer;
+}

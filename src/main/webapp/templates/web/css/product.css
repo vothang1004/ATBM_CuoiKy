@@ -1,0 +1,310 @@
+.new-product {
+    margin: 24px 0 0 0;
+}
+.text-info {
+	width: 100%;
+    font-size: 2rem;
+    text-align: center;
+    margin-bottom: 10px;
+    color: var(--gray-dark);
+}
+.text-info--sub {
+	width: 100%;
+	font-size: 1.2rem;
+	text-align: center;
+	margin-bottom: 24px;
+	color: var(--gray-dark);
+}
+.new-product__title {
+    display: inline-block;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-weight: 200;
+    color: var(--gray-dark);
+    letter-spacing: 5px;
+}
+.new-product__title:hover {
+    color: var(--orange);
+}
+/********************* product *****************/
+.product{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+}
+.product-sale {
+    position: absolute;
+    z-index: 1;
+    top: 2%;
+    right: 4%;
+    width: 35px;
+    height: 35px;
+    display: none;
+}
+.product-sale__item {
+    position: absolute;
+    z-index: 2;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(252, 8, 8);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 550;
+    color: var(--white);
+    transform: rotate(calc(30deg * var(--rotate)));
+    border-radius: 2px;
+}
+.product.product--sale .product-sale {
+    display: block;
+}
+.view-more {
+    display: none;
+}
+.new-product .row .col:last-child .product {
+    position: relative;
+}
+.new-product .row .col:last-child .product .view-more {
+    position: absolute;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.39);
+}
+.product .view-more .view-more__link {
+    font-size: 1.6rem;
+    color: var(--white);
+}
+.product .view-more .view-more__link:hover {
+    color: var(--orange);
+}
+
+.product__img {
+    position: relative;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    display: block;
+    height: 320px;
+    overflow-y: hidden;
+}
+.product__color {
+    display: flex;
+    margin-bottom: 5px;
+}
+.product__color-label {
+    width: 30px;
+    height: 30px;
+    margin-right: 5px;
+    border-radius: 50px;
+    cursor: pointer;
+}
+.product__color-option:checked + .product__color-label {
+    border: 1px solid var(--orange);
+}
+.product__color-label:hover {
+    border: 1px solid var(--orange);
+}
+.product__color-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50px;
+}
+.product__size {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    transform: translateY(100%);
+    padding: 5px 5px;
+    transition: all 0.2s ease-in;
+}
+.product__size-wrap {
+    display: flex;
+}
+.product:hover .product__img .product__size {
+    transform: translateY(0);
+}
+.product__size-label {
+    display: flex;
+    margin-right: 5px;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: var(--white);
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+    border-radius: 5px;
+    cursor: pointer;
+}
+.product__size-label:hover {
+    border: 1px solid var(--orange);
+}
+
+.product__size-option:checked + .product__size-label{
+    color: var(--orange);
+    border: 1px solid var(--orange);
+}
+/***************************************product info *********************************/
+.product__info {
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.product__brand {
+    padding: 5px 0;
+    font-size: 1.4rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: var(--secondary);
+    text-transform: uppercase;
+}
+.product__name {
+    height: 1.6rem;
+    margin-bottom: 5px;
+    font-size: 1.6rem;
+    color: var(--gray-dark);
+    text-transform: uppercase;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.product__price {
+    display: flex;
+    height: 30px;
+    align-items: center;
+}
+.product__price-sell {
+    display: inline-block;
+    margin-right: 20px;
+    font-size: 1.6rem;
+    font-weight: 550;
+    color: var(--red);
+}
+.product__price-sale {
+    font-size: 1.2rem;
+    color: var(--secondary);
+    text-decoration: line-through;
+}
+/*************************************** product action **********************/
+.product__action {
+    height: 30px;
+    overflow-y: hidden;
+}
+.product__action-wrap {
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.2s ease-in;
+}
+.product__action:hover .product__action-wrap{
+    transform: translateY(-50%);
+}
+
+.product__action-option {
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+.btn-action {
+    display: flex;
+    height: 100%;
+    align-items: center;
+    width: auto;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    color: var(--white);
+    font-size: 1.4rem;
+    background-color: var(--red);
+    padding: 5px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+.btn-action i {
+    font-size: 2rem;
+    font-weight: 100;
+    pointer-events: none;
+}
+.product__action-cart {
+    position: relative;
+    display: flex;
+}
+.product__action-cart::before {
+    content: '+1';
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 0.8rem;
+    transform: translate(-25%, 6%);
+}
+.product__action-buy i{
+    margin-right: 5px;
+}
+/************* toast ***************/
+.toast-wrap {
+    position: fixed;
+    z-index: 20;
+    top: 100px;
+    right: 20px;
+}
+
+.toast {
+    position: relative;
+    z-index: 21;
+    display: flex;
+    align-items: center;
+    width: 20vw;
+    padding: 10px;
+    background-color: var(--white);
+    margin-bottom: 10px;
+    transform: translateX(calc(100% + 24px));
+    opacity: 0;
+    animation: fadeIn 0.4s ease-in forwards;
+}
+@keyframes fadeIn {
+    to {
+    transform: translateX(0);
+    opacity: 1;
+    }
+}
+.toast::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 0;
+    width: 4px;
+    height: 100%;
+    background-color: var(--success);
+    border-radius: 5px 0 0 5px;
+}
+.toast__icon {
+    flex-basis: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 5px;
+}
+.toast__icon i {
+    font-size: 2rem;
+    color: var(--success);
+}
+.toast__message {
+    flex-basis: 90%;
+    font-size: 1.2rem;
+    color: var(--gray);
+    line-height: 20px;
+}

@@ -1,0 +1,92 @@
+.orderdetail {
+    margin: 24px auto 0;
+    width: 70%;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 0 5px 1px rgba(0, 0, 0, 0.301);
+}
+.orderdetail__title {
+    font-size: 2.5rem;
+    font-weight: 300;
+    color: var(--blue);
+    text-align: center;
+    margin-bottom: 24px;
+}
+.orderdetail__board {
+    display: flex;
+    flex-direction: column;
+}
+.orderdetail__board-id {
+    font-size: 1.4rem;
+    color: var(--blue);
+    margin-bottom: 24px ;
+}
+.orderdetail__board-id span {
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+}
+.orderdetail__board-user {
+    font-size: 1.4rem;
+    color: var(--blue);
+    margin-bottom: 24px ;
+}
+.orderdetail__board-user span {
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+}
+.orderdetail__board-products {
+    display: flex;
+    flex-direction: column;
+}
+.orderdetail__board-products-title {
+    font-size: 1.4rem;
+    color: var(--blue);
+}
+.porderdetail__board-products-list {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px 0 24px;
+    padding: 0 10px;
+    max-height: 100px;
+    overflow: auto;
+}
+.porderdetail__board-products-list::-webkit-scrollbar {
+    width: 5px;
+}
+.porderdetail__board-products-list::-webkit-scrollbar-track {
+    background-color: var(--white);
+}
+.porderdetail__board-products-list::-webkit-scrollbar-thumb {
+    background-color: var(--secondary);
+    border-radius: 5px;
+}
+.porderdetail__board-product {
+    display: flex;
+    align-items: center;
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+    padding: 5px 0;
+}
+.porderdetail__board-product span {
+    display: inline-block;
+    margin-right: 24px;
+}
+.orderdetail__board-status {
+    margin-bottom: 24px;
+    font-size: 1.4rem;
+    color: var(--blue);
+}
+.orderdetail__board-status span {
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+}
+.orderdetail__board-total {
+    font-size: 1.4rem;
+    color: var(--blue);
+}
+.orderdetail__board-total span {
+    font-size: 1.2rem;
+    color: var(--gray-dark);
+}

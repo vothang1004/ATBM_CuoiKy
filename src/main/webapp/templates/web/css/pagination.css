@@ -1,0 +1,29 @@
+.pagination {
+    display: flex;
+    justify-content: flex-end;
+}
+.pagination__item {
+    margin-right: 10px;
+}
+.pagination__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: fit-content;
+    padding: 10px 15px;
+    font-size: 1.4rem;
+    color: var(--gray-dark);
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+}
+.pagination__link.active {
+	background-color: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+}
+.pagination__link:hover {
+    background-color: var(--orange);
+    color: var(--white);
+    border-color: var(--orange);
+}

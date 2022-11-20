@@ -1,0 +1,243 @@
+@media only screen and (max-width: 1239px) {
+    .product__action:hover .product__action-wrap{
+        transform: translateY(0);
+    }
+    .product__action-option {
+        display: none;
+    }
+    .product__size {
+        display: none;
+    }
+    .product__img {
+        height: 280px;
+    }
+    
+}
+
+
+
+/******************** taplet */
+@media only screen and (max-width: 1023px) {
+    .hide-on-taplet {
+        display: none;
+    }
+    .header-up__search-input {
+        flex: 0 0 90%;
+    }
+    .login-board, .signup-board {
+        border-right: 1px solid var(--red);
+    }
+    .login-board__desc, .signup-board__desc {
+    padding: 30px 10px 30px 20px;
+    }
+    .login-board__socials-option, .signup-board__socials-option {
+        width: 80%;
+        height: 30px;
+        padding: 10px 0;
+        margin-bottom: 5px;
+    }
+    .login-board__socials-item, .signup-board__socials-item {
+        flex-direction: column;
+        align-items: center;
+        height: 70px;
+    }
+    
+    /*** product *****/
+    .toast {
+        width: 40vw;
+    }
+    .product__action:hover .product__action-wrap{
+        transform: translateY(0);
+    }
+    /****** top sell ***********/
+    .top-product {
+        height: 900px;
+    }
+    .top-product__video {
+        width: 100%;
+        height: 400px;
+        top: 500px;
+    }
+    .top-product__list {
+        height: 500px;
+        top: 0;
+        width: 100%;
+    }
+    /*************** news ****************/
+    .news-left {
+        margin-bottom: 24px;
+    }
+    /**** gift in detailproduct ****/
+    .detailproduct-right__voucher-gift {
+        width: 25%;
+    }
+    /*********** sort product ******/
+    .sort-product__item {
+        font-size: 1.2rem;
+    }
+    /************ product  detail ********/
+    .detailproduct-viewed .product .product__img {
+        height: 320px;
+    }
+    .detailproduct-same .product .product__img {
+        height: 320px;
+    }
+    
+}
+/*************************** mobile */
+@media only screen and (max-width: 739px) {
+    html {
+        font-size: 50%;
+    }
+    /******* login *******/
+    .login-board {
+        width: 80%;
+    }
+    .login-content {
+        top: 90px;
+        margin-top: 0;
+    }
+    /********** signup **********/
+    .signup-board {
+        width: 80%;
+    }
+    .signup-content {
+        top: 90px;
+        margin-bottom: 0;
+    }
+    /****** header ***********/
+    .hide-on-mobile {
+        display: none;
+    }
+    .header-up__search-input {
+        flex: 0 0 80%;
+    }
+    .show-on-mobile {
+        display: block;
+    }
+    .header {
+        height: 90px;
+    }.header-up__search {
+        justify-content: space-between;
+    }
+    /********** toast *********/
+    .toast {
+        width: 50vw;
+    }
+    /******* container ********/
+    .container {
+        top: 100px;
+        margin-top: 0;
+    }
+    /******** top product ********/
+    .top-product {
+        height: 830px;
+    }
+    /********** news ***********/
+    .news-right__item {
+        height: 170px;
+    }
+    .news-right__item-img {
+        height: 140px;
+    }
+    /******** key top *********/
+    .key-top__item-link {
+        flex-basis: 25%;
+    }
+    /**** detailproduct ****/
+    .detailproduct-right__voucher-gift {
+        width: 28%;
+    }
+    .container-detail {
+        top: 90px;
+        margin-top: 0;
+    }
+    .detailproduct-left {
+        height: 80vh;
+    }
+    .detailproduct-left__slide-choose__img {
+        height: 100px;
+    }
+    /************ newproduct **********/
+    .container-newproduct {
+        top: 90px;
+        margin-top: 0;
+    }
+    /********* enjoy ***********/
+    .content-enjoy {
+        top: 90px;
+        margin-bottom: 0;
+    }
+    /**** cart *****/
+    .content-cart {
+        top: 90px;
+        margin-top: 0;
+    }
+    .cart-product__table-head__info ,
+    .cart-product__table-head__details {
+        width: 50%;
+    }
+    .cart-product__table-details-product,
+    .cart-product__table-info-product {
+        width: 50%;
+    }
+    /******** question ******/
+    .content-question {
+        top: 90px;
+        margin-top: 0;
+    }
+    /******* contact *********/
+    .content-contact {
+        top: 90px;
+        margin-top: 0;
+    }
+}
+/********************** mobile min **********************/
+@media only screen and (max-width: 469px) {
+    html {
+        font-size: 48%;
+    }
+    /****** header ***********/
+    .header-up__search-input form button {
+        flex-basis: 30%;
+    }
+     /***************** top product ****************/
+    .top-product {
+        height: 800px;
+    }
+    /********** news ***********/
+    .news-right__item {
+        height: 150px;
+    }
+    .news-right__item-img {
+        height: 120px;
+    }
+    /**************** product detail **************/
+    .detailproduct-right__btn-action-wrap {
+        flex-direction: column;
+    }
+    .btn.btn-cart {
+        margin-bottom: 24px;
+    }
+    .detailproduct-left {
+        height: 60vh;
+    }
+    .detailproduct-left__slide-choose__img {
+        height: 100px;
+    }
+    /*********** sort product ******/
+    .sort-product__item {
+        font-size: 1rem;
+    }
+    /********* index *********/
+    .product .product__img {
+        height: 280px !important;
+    }
+    .product .view-more {
+        height: 280px !important;
+    }
+    /****** cart ***********/
+    .cart-product__table-info-product__img {
+        height: 90px;
+    }
+}
