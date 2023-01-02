@@ -1,6 +1,8 @@
 package ego.wear.controller;
 
 import java.io.IOException;
+import java.math.BigInteger;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -9,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ego.wear.model.UserModel;
 import ego.wear.service.impl.UserService;
+import ego.wear.signature.RSA;
 import ego.wear.util.MD5Util;
 import ego.wear.util.SessionUtil;
 
@@ -54,14 +57,25 @@ public class LoginController extends HttpServlet {
 		
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
+		String passwordEndCrypt = request.getParameter("password-encrypt");
+		
+		
 		UserModel user = UserService.getInstance().checkUser(username, MD5Util.getInstance().getMD5(password));
 		if(user != null) {
-			SessionUtil.getInstance().putValue(request, "user", user);
-			if(user.getRoleId() == 1) {
-				response.sendRedirect(request.getServletContext().getContextPath() + "/admin-home");
-			}else if(user.getRoleId() == 2) {
-				response.sendRedirect(request.getServletContext().getContextPath() + "/home");
+			String passwordDecrypt = new String(RSA.decryptByPulicKey(new BigInteger(passwordEndCrypt), new BigInteger(user.getPublicKey())).toByteArray());
+			
+			if(passwordDecrypt.equals(password)) {
+				SessionUtil.getInstance().putValue(request, "user", user);
+				if(user.getRoleId() == 1) {
+					response.sendRedirect(request.getServletContext().getContextPath() + "/admin-home");
+				}else if(user.getRoleId() == 2) {
+					response.sendRedirect(request.getServletContext().getContextPath() + "/home");
+				}
+			}else {
+				request.setAttribute("message", "Khóa bí mật không trùng khớp");
+				doGet(request, response);
 			}
+			
 		}else {
 			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng");
 			doGet(request, response);
