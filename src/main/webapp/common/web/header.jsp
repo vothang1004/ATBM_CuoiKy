@@ -3,13 +3,13 @@
         <header class="header">
             <div class="grid wide">
                 <div class="row header-up">
-                    <div class="col l-3 m-2 c-0 min-0">
+                    <div class="col-3 ">
                         <a href="${pageContext.request.contextPath}/home" class="header-up__logo hide-on-mobile">
-                        <img src="//bizweb.dktcdn.net/100/434/926/themes/832778/assets/logo.png?1631675028757"
-                            alt="logo">
+                            <img src="//bizweb.dktcdn.net/100/434/926/themes/832778/assets/logo.png?1631675028757"
+                                alt="logo">
                         </a>
                     </div>
-                    <div class="col l-6 m-5 c-8 min-8">
+                    <div class="col-6 ">
                         <div class="header-up__search">
                             <div class="menu-mobile show-on-mobile">
                                 <label for="check-menu"><i class="menu-mobile__icon fas fa-list-ul"></i></label>
@@ -70,7 +70,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col l-3 m-5 c-4 min-4">
+                    <div class="col-3 ">
                         <div class="header-up__options">
                             <div class="header-up__options-login hide-on-mobile">
                                 <i class="fas fa-user"></i>

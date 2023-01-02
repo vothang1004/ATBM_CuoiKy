@@ -1,6 +1,7 @@
 package ego.wear.model;
 
 import java.io.Serializable;
+import java.math.BigInteger;
 import java.sql.Timestamp;
 
 public class UserModel extends AbstractModel implements Serializable{
@@ -14,8 +15,9 @@ public class UserModel extends AbstractModel implements Serializable{
 	private String email;
 	private int status;
 	private long roleId;
+	private String publicKey; 
 	public UserModel(long id, String createdBy, Timestamp createdDate, String modifiedBy, Timestamp modifiedDate,
-			String username, String password, String phoneNumber, String email, int status, long roleId) {
+			String username, String password, String phoneNumber, String email, int status, long roleId, String publicKey) {
 		super(id, createdBy, createdDate, modifiedBy, modifiedDate);
 		this.username = username;
 		this.password = password;
@@ -23,6 +25,7 @@ public class UserModel extends AbstractModel implements Serializable{
 		this.email = email;
 		this.status = status;
 		this.roleId = roleId;
+		this.publicKey = publicKey;
 	}
 	public UserModel() {
 		
@@ -62,6 +65,12 @@ public class UserModel extends AbstractModel implements Serializable{
 	}
 	public void setRoleId(long roleId) {
 		this.roleId = roleId;
+	}
+	public String getPublicKey() {
+		return this.publicKey;
+	}
+	public void setPublicKey(String publicKey) {
+		this.publicKey = publicKey;
 	}
 	
 }

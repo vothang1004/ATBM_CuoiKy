@@ -18,7 +18,7 @@
                     <a href="./index.html">Trang chủ</a> <span>/</span> <span>Sản phẩm mới</span>
                 </div>
                 <div class="row">
-                    <div class="col l-3 m-4 c-0 min-0">
+                    <div class="col-3">
                         <div class="sidebar">
                             <div class="sidebar__category">
                                 <h2 class="sidebar__category-title">Danh mục</h2>
@@ -142,7 +142,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col l-9 m-8 c-12 min-12">
+                    <div class="col-9">
                         <div class="sort-product">
                             <ul class="sort-product__list">
                                 <div class="sort-product__list-move"></div>
