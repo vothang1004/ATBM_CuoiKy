@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import ego.wear.model.UserModel;
 import ego.wear.service.impl.UserService;
+import ego.wear.signature.RSA;
 import ego.wear.util.MD5Util;
 import ego.wear.util.SendMailUtil;
 
@@ -57,12 +58,19 @@ public class SignupController extends HttpServlet {
 		String password = request.getParameter("password");
 		int roleId = Integer.parseInt(request.getParameter("role"));
 		
+		
 		if(UserService.getInstance().isUniqueUsername(username)) {
+			RSA rsa = new RSA();
+			rsa.inintialize();
+			String publicKey = rsa.getN().toString();
 			UserModel user = UserService.getInstance().insert(new UserModel(0, null, new Timestamp(System.currentTimeMillis()),
-					null, null, username, MD5Util.getInstance().getMD5(password), phoneNumber, email, 1, roleId));
+					null, null, username, MD5Util.getInstance().getMD5(password), phoneNumber, email, 1, roleId, publicKey));
 			if(user != null) {
 //				SendMailUtil.getInstance().sendRegisterSuccess(user.getEmail());
-				response.sendRedirect(request.getServletContext().getContextPath() + "/login");
+//				response.sendRedirect(request.getServletContext().getContextPath() + "/login");
+				request.setAttribute("private_key", rsa.getD());
+				request.setAttribute("public_key", rsa.getN());
+				request.getRequestDispatcher("views/web/login.jsp").forward(request, response);
 			}else {
 				request.setAttribute("message", "Đăng ký không thành công");
 				doGet(request, response);

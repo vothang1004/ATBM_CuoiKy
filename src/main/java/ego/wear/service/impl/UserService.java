@@ -53,10 +53,14 @@ public class UserService implements IUserService {
 	}
 	
 	public static void main(String[] args) {
-		List<UserModel> list = UserService.getInstance().findAll();
-		for(UserModel m: list) {
-			System.out.println(m.getUsername());
-		}
+//		List<UserModel> list = UserService.getInstance().findAll();
+//		for(UserModel m: list) {
+//			System.out.println(m.getUsername());
+//		}
+		UserModel user = new UserModel(0, null, null, null, null, "vothang104", "123456", "0359500771",
+				"lcao4568@gmail.com", 1, 1, "public");
+		UserModel userInserted = UserService.getInstance().insert(user);
+		System.out.println(userInserted.getUsername());
 	}
 	
 }
