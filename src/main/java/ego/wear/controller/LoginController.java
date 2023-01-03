@@ -2,6 +2,10 @@ package ego.wear.controller;
 
 import java.io.IOException;
 import java.math.BigInteger;
+import java.security.KeyFactory;
+import java.security.PublicKey;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,30 +22,32 @@ import ego.wear.util.SessionUtil;
 /**
  * Servlet implementation class LoginController
  */
-@WebServlet(urlPatterns = {"/login"})
+@WebServlet(urlPatterns = { "/login" })
 public class LoginController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public LoginController() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public LoginController() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
 		UserModel user = (UserModel) SessionUtil.getInstance().getValue(request, "user");
-		if(user != null) {
+		if (user != null) {
 			response.sendRedirect("home");
-		}else {
+		} else {
 			String message = (String) request.getAttribute("message");
-			if(message != null) {
+			if (message != null) {
 				request.setAttribute("message", message);
 			}
 			request.getRequestDispatcher("views/web/login.jsp").forward(request, response);
@@ -49,34 +55,47 @@ public class LoginController extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		request.setCharacterEncoding("UTF-8");
 		response.setCharacterEncoding("UTF-8");
-		
+
 		String username = request.getParameter("username");
 		String password = request.getParameter("password");
-		String passwordEndCrypt = request.getParameter("password-encrypt");
-		
-		
+		String passwordEnCrypt = request.getParameter("password-encrypt");
+
 		UserModel user = UserService.getInstance().checkUser(username, MD5Util.getInstance().getMD5(password));
-		if(user != null) {
-			String passwordDecrypt = new String(RSA.decryptByPulicKey(new BigInteger(passwordEndCrypt), new BigInteger(user.getPublicKey())).toByteArray());
-			
-			if(passwordDecrypt.equals(password)) {
-				SessionUtil.getInstance().putValue(request, "user", user);
-				if(user.getRoleId() == 1) {
-					response.sendRedirect(request.getServletContext().getContextPath() + "/admin-home");
-				}else if(user.getRoleId() == 2) {
-					response.sendRedirect(request.getServletContext().getContextPath() + "/home");
+		if (user != null) {
+			try {
+				RSA rsa = new RSA();
+				String passwordDecrypt = "";
+				try {
+					passwordDecrypt = rsa.decryptByPublicKey(passwordEnCrypt, rsa.getAsPublicKey(user.getPublicKey()));
+				} catch (Exception e) {
+					request.setAttribute("message", "Chuỗi mã hóa không đúng định dạng");
+					doGet(request, response);
+					return;
 				}
-			}else {
-				request.setAttribute("message", "Khóa bí mật không trùng khớp");
-				doGet(request, response);
+				if (passwordDecrypt.equals(password)) {
+					SessionUtil.getInstance().putValue(request, "user", user);
+					if (user.getRoleId() == 1) {
+						response.sendRedirect(request.getServletContext().getContextPath() + "/admin-home");
+					} else if (user.getRoleId() == 2) {
+						response.sendRedirect(request.getServletContext().getContextPath() + "/home");
+					}
+				} else {
+					request.setAttribute("message", "Khóa bí mật không trùng khớp");
+					doGet(request, response);
+				}
+
+			} catch (Exception e) {
+				e.printStackTrace();
 			}
-			
-		}else {
+
+		} else {
 			request.setAttribute("message", "Tên đăng nhập hoặc mật khẩu không đúng");
 			doGet(request, response);
 		}

@@ -125,6 +125,7 @@
 					</div>
 				</div>
 			</div>
+			<span id="username-value">${username}</span>
 		</div>
 
 		<script src="<c:url value='/templates/web/js/login.js' />"></script>
@@ -142,6 +143,7 @@
 			const btnSavePrivateKey = document.getElementById('btn-save-private-key');
 			if (btnSavePrivateKey) {
 				btnSavePrivateKey.onclick = async (e) => {
+					const userName = document.getElementById('username-value').innerText;
 					const now = await Date.now();
 					const date = await new Date(now)
 					const day = await date.getDate();
@@ -150,8 +152,8 @@
 					const privateKeyText = document.getElementById('private-key-text')?.innerText;
 					const publicKeyText = document.getElementById('public-key-text')?.innerText;
 
-					const privateKeyFileName = day + '-' + month + '-' + year + '_private-key.txt';
-					const publicKeyFileName = day + '-' + month + '-' + year + '_public-key.txt';
+					const privateKeyFileName = day + '-' + month + '-' + year + '_' + userName + '_private-key.txt';
+					const publicKeyFileName = day + '-' + month + '-' + year + '_' + userName + '_public-key.txt';
 					var blob = new Blob([privateKeyText],
 						{ type: "text/plain;charset=utf-8" });
 					await saveAs(blob, privateKeyFileName);

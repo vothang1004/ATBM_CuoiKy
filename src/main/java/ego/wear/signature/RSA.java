@@ -1,55 +1,83 @@
 package ego.wear.signature;
 
-import java.io.IOException;
-import java.math.BigInteger;
-import java.util.Random;
+import java.security.InvalidKeyException;
+import java.security.KeyFactory;
+import java.security.KeyPair;
+import java.security.KeyPairGenerator;
+import java.security.NoSuchAlgorithmException;
+import java.security.PrivateKey;
+import java.security.PublicKey;
+import java.security.spec.InvalidKeySpecException;
+import java.security.spec.PKCS8EncodedKeySpec;
+import java.security.spec.X509EncodedKeySpec;
+import java.util.Base64;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
 
 public class RSA {
-    public static final int VERSION = 1024;
-    public static final BigInteger E = new BigInteger("65537");
+	private PublicKey publicKey;
+	private PrivateKey privateKey;
 
-    private BigInteger p;
-    private BigInteger q;
-    private BigInteger n;
-    private BigInteger phiN;
-    private BigInteger d;
+	public void initialize() throws NoSuchAlgorithmException {
+		// Generate a 1024-bit RSA key pair
+		KeyPairGenerator keyGen = KeyPairGenerator.getInstance("RSA");
+		keyGen.initialize(1024);
+		KeyPair keyPair = keyGen.generateKeyPair();
+		this.publicKey = keyPair.getPublic();
+		this.privateKey = keyPair.getPrivate();
+	}
 
-    public BigInteger getN() {
-        return n;
-    }
-    public BigInteger getD() {
-    	return d;
-    }
+	public static String encryptByPrivateKey(String plainText, PrivateKey privateKey) throws NoSuchAlgorithmException,
+			NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+		Cipher cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.ENCRYPT_MODE, privateKey);
+		byte[] encryptedBytes = cipher.doFinal(plainText.getBytes());
+		String encryptedString = Base64.getEncoder().encodeToString(encryptedBytes);
+		return encryptedString;
+	}
+	public static String decryptByPublicKey(String cipherText, PublicKey publicKey) throws NoSuchAlgorithmException, NoSuchPaddingException, InvalidKeyException, IllegalBlockSizeException, BadPaddingException {
+		byte[] cipherBytes = Base64.getDecoder().decode(cipherText);
+		Cipher cipher = Cipher.getInstance("RSA");
+		cipher.init(Cipher.DECRYPT_MODE, publicKey);
+		 byte[] plainBytes = cipher.doFinal(cipherBytes);
+		 String plainText = new String(plainBytes);
+		return plainText;
+	}
+	public String getPrivateKey() {
+		String privateKeyString = Base64.getEncoder().encodeToString(this.privateKey.getEncoded());
+		return privateKeyString;
+	}
+	public String getPublicKey() {
+		String publicKeyString = Base64.getEncoder().encodeToString(this.publicKey.getEncoded());
+		return publicKeyString;
+	}
+	public static PublicKey getAsPublicKey(String publicKeyString) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		byte[] keyBytes = Base64.getDecoder().decode(publicKeyString);
+		X509EncodedKeySpec keySpec = new X509EncodedKeySpec(keyBytes);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		PublicKey publicKey = keyFactory.generatePublic(keySpec);
+		return publicKey;
+	}
+	public static PrivateKey getAsPrivateKey(String privateKeyString) throws NoSuchAlgorithmException, InvalidKeySpecException {
+		byte[] privateKeyBytes = Base64.getDecoder().decode(privateKeyString);
+		PKCS8EncodedKeySpec keySpec = new PKCS8EncodedKeySpec(privateKeyBytes);
+		KeyFactory keyFactory = KeyFactory.getInstance("RSA");
+		PrivateKey privateKey = keyFactory.generatePrivate(keySpec);
+		return privateKey;
+	}
 
-    public void inintialize() {
-        this.p = BigInteger.probablePrime(VERSION / 2, new Random());
-        this.q = BigInteger.probablePrime(VERSION / 2, new Random());
-
-        this.n = p.multiply(q);
-        this.phiN = p.subtract(BigInteger.ONE).multiply(q.subtract(BigInteger.ONE));
-        this.d = E.modInverse(phiN);
-    }
-
-//    public BigInteger encrypt(BigInteger message, BigInteger partnerN) {
-//        return message.modPow(E, partnerN);
-//    }
-//
-//    public BigInteger decrypt(BigInteger cipher) {
-//        return cipher.modPow(d, n);
-//    }
-    public static BigInteger encryptByPrivateKey(BigInteger message, BigInteger privateKey, BigInteger publicKey) {
-    	return message.modPow(privateKey, publicKey);
-    }
-    public static BigInteger decryptByPulicKey(BigInteger cipher, BigInteger publicKey) {
-    	return cipher.modPow(E, publicKey);
-    }
-
-    public static void main(String[] args) throws IOException {
-      String password = "123456";
-      BigInteger passwordEncrypt = RSA.encryptByPrivateKey(new BigInteger(password.getBytes()),
-    		  new BigInteger("66515010153352897661154225900078641302085003370376175414836988778830367413129708419595899616597300471830627649474394306480506878637313948885981846028762538154414374291049631231441201297184612651431491273681996540048312288491555408749298987916663950057028745860409483341069832715805993123373334284712362119761"),
-    		  new BigInteger("84108864328553848383481216771117039341953092264496862857184759851782931796601869659162160862331891661309790928911078561083062809779533153278934017195087817904462462724784621859261288162956436390416365246317363690527303004545558075566046251016941257291188446329212830354218639815744452725201827234350012903001")
-    		  );
-      System.out.println(passwordEncrypt);
-    }
+	public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, NoSuchPaddingException, IllegalBlockSizeException, BadPaddingException, InvalidKeySpecException {
+		String plainText = "123";
+		RSA rsa = new RSA();
+		rsa.initialize();
+		
+		String encryptedString = rsa.encryptByPrivateKey(plainText, rsa.getAsPrivateKey(rsa.getPrivateKey()));
+		System.out.println("encrypted => " + encryptedString);
+		String decryptedString = rsa.decryptByPublicKey(encryptedString, rsa.getAsPublicKey(rsa.getPublicKey()));
+		System.out.println("decrypted => " + decryptedString);
+		
+	}
 }
